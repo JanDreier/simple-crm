@@ -60,14 +60,8 @@ mat-toolbar-row {
     padding-top: 20px;
 }
 
-.logout,
-.login {
-    display: flex;
-    justify-content: center;
-    align-items: center;
+.logout {
     position: absolute;
     z-index: 1;
     right: 56px;
-    cursor: pointer;
-    padding-right: 0;
 }
