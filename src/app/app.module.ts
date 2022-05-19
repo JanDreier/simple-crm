@@ -31,9 +31,10 @@ import { UserDetailComponent } from './user-detail/user-detail.component';
 import {MatMenuModule} from '@angular/material/menu';
 import { DialogEditAddressComponent } from './dialog-edit-address/dialog-edit-address.component';
 import { DialogEditUserComponent } from './dialog-edit-user/dialog-edit-user.component';
-import { LandingPageComponent } from './landing-page/landing-page.component';
+
 import { LoginComponent } from './login/login.component';
 import { SignupComponent } from './signup/signup.component';
+import { HotToastModule } from '@ngneat/hot-toast';
 
 
 
@@ -48,7 +49,6 @@ import { SignupComponent } from './signup/signup.component';
     UserDetailComponent,
     DialogEditAddressComponent,
     DialogEditUserComponent,
-    LandingPageComponent,
     LoginComponent,
     SignupComponent,
   ],
@@ -77,7 +77,8 @@ import { SignupComponent } from './signup/signup.component';
     provideDatabase(() => getDatabase()),
     provideFirestore(() => getFirestore()),
     AngularFireModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    HotToastModule.forRoot()
   ],
   providers: [
     MatDatepickerModule,

@@ -1,5 +1,5 @@
-<mat-drawer-container *ngIf="router.url == '/dashboard' || router.url == '/user'" class="mat-drawer-container" autosize>
-    <mat-drawer #drawer class="sidenav" mode="side" [opened]="true">
+<mat-drawer-container class="mat-drawer-container" autosize>
+    <mat-drawer #drawer id="drawer" class="sidenav" mode="side" [opened]="true">
         <div class="logo-container">
             <img class="logo" src="assets/img/logo.png">
         </div>
@@ -14,42 +14,31 @@
 
     <div class="example-sidenav-content">
         <mat-toolbar color="primary">
+
             <mat-toolbar-row>
                 <div>
-                    <button mat-icon-button class="example-icon" (click)="drawer.toggle()">
+                    <button mat-icon-button class="example-icon" (click)="drawer.toggle()" [disabled]="router.url == '/' || router.url =='/sign-up'">
                 <mat-icon class="menu-icon">menu</mat-icon>
               </button>
                 </div>
                 <span>Simple CRM</span>
-                <button mat-button class="logout">
-                    <mat-icon>logout</mat-icon>
-                    <span>Logout</span>
-                </button>
+                <ng-container *ngIf="authService.currentUser$ | async as user; else loginButton">
+                    <button mat-button class="logout" (click)="logout()">
+                        <mat-icon>logout</mat-icon>
+                        <span>Logout</span>
+                    </button>
+                </ng-container>
+                <ng-template #loginButton>
+                    <button mat-button class="logout">
+                        <mat-icon>login</mat-icon>
+                        <span>Login</span>
+                    </button>
+                </ng-template>
+
             </mat-toolbar-row>
         </mat-toolbar>
         <div class="router-container">
             <router-outlet></router-outlet>
         </div>
     </div>
-</mat-drawer-container>
-
-<mat-drawer-container *ngIf="router.url != '/dashboard' && router.url != '/user'" class="mat-drawer-container" autosize>
-
-
-    <div class="example-sidenav-content">
-        <mat-toolbar color="primary">
-            <mat-toolbar-row>
-                <span>Simple CRM</span>
-                <button mat-button class="login" routerLink="login">
-                    <mat-icon>login</mat-icon>
-                    <span>Login</span>
-                </button>
-            </mat-toolbar-row>
-        </mat-toolbar>
-        <div class="router-container">
-            <router-outlet></router-outlet>
-        </div>
-
-    </div>
-
 </mat-drawer-container>
