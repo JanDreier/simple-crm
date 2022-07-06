@@ -23,6 +23,8 @@ export class LoginComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  public hide = true;
+
 
   get email(){
     return this.loginForm.get('email');
@@ -45,7 +47,7 @@ export class LoginComponent implements OnInit {
         error: 'There was an error'
       })
     ).subscribe(() => {
-      this.router.navigate(['/user'])
+      this.router.navigate(['/dashboard'])
     });
   }
 }

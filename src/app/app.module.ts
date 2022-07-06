@@ -78,7 +78,8 @@ import { HotToastModule } from '@ngneat/hot-toast';
     provideFirestore(() => getFirestore()),
     AngularFireModule,
     ReactiveFormsModule,
-    HotToastModule.forRoot()
+    HotToastModule.forRoot(),
+    MatMenuModule
   ],
   providers: [
     MatDatepickerModule,

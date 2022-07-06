@@ -7,12 +7,12 @@
             <mat-error *ngIf="email?.errors?.['email']">Please enter a correct email format</mat-error>
         </mat-form-field>
         <mat-form-field>
-            <input matInput placeholder="Password" formControlName="password">
+            <input matInput placeholder="Password" formControlName="password" [type]="hide ? 'password' : 'text'">
             <mat-error *ngIf="password?.errors?.['required']">Please enter the password</mat-error>
         </mat-form-field>
         <div class="center mt-16">
             <button mat-raised-button color="primary" type="submit">Login</button>
         </div>
-        <span class="center mt-16 font-16">New to our platform<a class="sign-up-link" routerLink="sign-up">Sign Up!</a></span>
+        <span class="center mt-16 font-16">New to our platform?<a class="sign-up-link" routerLink="sign-up">Sign Up!</a></span>
     </form>
 </div>

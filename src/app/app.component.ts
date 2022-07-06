@@ -34,4 +34,9 @@ export class AppComponent {
       this.router.navigate(['']);
     });
   }
+
+  goToLogin(){
+    console.log('works');
+    this.router.navigateByUrl('/');
+  }
 }

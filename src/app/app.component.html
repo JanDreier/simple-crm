@@ -23,13 +23,14 @@
                 </div>
                 <span>Simple CRM</span>
                 <ng-container *ngIf="authService.currentUser$ | async as user; else loginButton">
-                    <button mat-button class="logout" (click)="logout()">
-                        <mat-icon>logout</mat-icon>
-                        <span>Logout</span>
+                    <button mat-button class="logout" [matMenuTriggerFor]="userMenu">
+                        <mat-icon>account_circle</mat-icon>
+                        {{user.displayName}}
+                        <mat-icon>expand_more</mat-icon>
                     </button>
                 </ng-container>
                 <ng-template #loginButton>
-                    <button mat-button class="logout">
+                    <button mat-button class="logout" (click)="goToLogin()">
                         <mat-icon>login</mat-icon>
                         <span>Login</span>
                     </button>
@@ -42,3 +43,7 @@
         </div>
     </div>
 </mat-drawer-container>
+
+<mat-menu #userMenu="matMenu">
+    <button mat-menu-item (click)="logout()">Logout</button>
+</mat-menu>
